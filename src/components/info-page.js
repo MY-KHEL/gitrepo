@@ -1,0 +1,67 @@
+const pages =[
+    {
+     id : 1,
+     name: 'Workcation',   
+     language: 'Laravel',   
+     timestamp: '3 hrs',   
+     link:'debbielewis/workcation',
+     isFavourite:true,
+     isActive:true,
+    },
+    {
+     id : 2,
+     name: 'Easywire',   
+     language: 'Next Js',   
+     timestamp: '6 hrs',   
+     link:'debbielewis/easywire',
+     isFavourite:true,
+     isActive:true,
+    },
+    {
+     id : 3,
+     name: 'Workflow',   
+     language: 'Laravel',   
+     timestamp: '4d',   
+     link:'debbielewis/workflow',
+     isFavourite:true,
+     isActive:true,
+    },
+    {
+     id : 4,
+     name: 'kitetail',   
+     language: 'Laravel',   
+     timestamp: '4d',   
+     link:'debbielewis/kitetail',
+     isFavourite:false,
+     isActive:false,
+    },
+    {
+     id : 5,
+     name: 'Talkslides',   
+     language: 'Laravel',   
+     timestamp: '3 hrs',   
+     link:'debbielewis/talk-slides',
+     isFavourite:true,
+     isActive:true,
+    },
+    {
+     id : 6,
+     name: 'Personal website',   
+     language: 'Next js',   
+     timestamp: '6 hrs',   
+     link:'debbielewis/personal-website',
+     isFavourite:false,
+     isActive:true,
+    },
+    {
+     id : 7,
+     name: 'Digest',   
+     language: 'Laravel',   
+     timestamp: '3 hrs',   
+     link:'debbielewis/digest',
+     isFavourite:false,
+     isActive:true,
+    }
+
+]
+export default pages
