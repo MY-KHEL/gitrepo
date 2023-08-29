@@ -1,24 +1,37 @@
-import logo from './logo.svg';
+// import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
 
 function App() {
+  const [person , setPerson] = useState({
+      name : 'Michael',
+      age : 21,
+      isAdmitted:true,
+      gender:'male'
+  })
+  function handleChange(){
+    setPerson(person => {
+      return{
+        ...person,isAdmitted:!person.isAdmitted
+      }
+    })
+  }
+
+console.log(person);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+<>
+
+   <div>
+      i am {person.name} , I am a {person.gender} of {person.age} years old
+<br/>
+      i am {person.isAdmitted?'Admitted':'Not Admitted'} into university
+
+      <br/>
+      <button onClick={handleChange}>
+        Change Admission
+      </button>
+   </div>
+   </>
   );
 }
 
