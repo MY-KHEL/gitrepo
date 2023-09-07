@@ -1,38 +1,44 @@
-// import logo from './logo.svg';
-import { useState } from 'react';
-import './App.css';
+// import { useState } fr/om "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import Header from "./components/Header";
+import Definition from "./components/Definition";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.min.js';
+import Voicing from "./components/Audio";
 
-function App() {
-  const [person , setPerson] = useState({
-      name : 'Michael',
-      age : 21,
-      isAdmitted:true,
-      gender:'male'
-  })
-  function handleChange(){
-    setPerson(person => {
-      return{
-        ...person,isAdmitted:!person.isAdmitted
-      }
-    })
-  }
+const App = () => {
+  const [word, setWord] = useState(" ");
+  const [meaning, setMeaning] = useState("");
 
-console.log(person);
+  const dictionaryApi = async () => {
+    try {
+      const data = await axios.get(
+        `https://api.dictionaryapi.dev/api/v2/entries/en/${word}`
+      );
+      setMeaning(data.data);
+      // console.log(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  //console.log(meaning);
+  useEffect(() => {
+    dictionaryApi();
+  }, [ word ]);
+
   return (
-<>
+    <div className="bg-black text-white fs-4">
+    <div className="container pt-5 ">
+      <p>Dictionary by <a href="https://github.com/MY-KHEL/" target="_blank" rel="noreferrer"> mykhel</a> </p>
+      {meaning && <Voicing word={word} meaning={meaning} />}
 
-   <div>
-      i am {person.name} , I am a {person.gender} of {person.age} years old
-<br/>
-      i am {person.isAdmitted?'Admitted':'Not Admitted'} into university
+      <Header word={word} setWord={setWord} meaning={meaning} />
 
-      <br/>
-      <button onClick={handleChange}>
-        Change Admission
-      </button>
-   </div>
-   </>
+      {meaning && <Definition word={word} meaning={meaning} />}
+    </div>
+    </div>
   );
-}
+};
 
 export default App;
